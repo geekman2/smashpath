@@ -1,2 +1,2 @@
 from . import engine
-from . import cli
+from . import interface
