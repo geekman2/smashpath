@@ -1,4 +1,5 @@
 from . import *
+import random
 class Bet:
     # Stats that are hard to keep low
     low_stats = { 
@@ -40,18 +41,18 @@ class Bet:
     
     @property
     def win_conditions(self):
-        bet1_value = sum([tiles[x] for x in self.bet1])
-        bet2_value = sum([tiles[x] for x in self.bet2])
+        bet1_value = sum([x.value for x in self.bet1])
+        bet2_value = sum([x.value for x in self.bet2])
         value_diff = bet2_value - bet1_value
         used_stats = []
         print('value diff', value_diff)
         if bet1_value > bet2_value:
-            win_conditions = [generate_win_condition(easy=True)]
+            win_conditions = [self._generate_win_condition_(easy=True)]
         else:
             win_conditions = []
             conditions_value = 0
             for i in range(20):
-                condition = generate_win_condition()
+                condition = self._generate_win_condition_()
                 condition_value = condition[-1]
                 condition_stat = condition[1]
                 if conditions_value + condition_value <= value_diff and condition_stat not in used_stats:
@@ -66,19 +67,19 @@ class Bet:
         self.bet1 = bet1
         self.bet2 = bet2
     
-    def _generate_win_condition_(easy=False):
+    def _generate_win_condition_(self, easy=False):
         highlow = random.choice(['high', 'low'])
         percentage = random.random()
         if easy:
             percentage = .01
         if highlow == 'high':
-            stat_key = random.choice(list(high_stats.keys()))
-            min_value, max_value = high_stats[stat_key]
+            stat_key = random.choice(list(self.high_stats.keys()))
+            min_value, max_value =self. high_stats[stat_key]
             out_value = round(percentage*max_value+min_value)
             dollar_value = out_value / max_value * 1000
         else:
-            stat_key = random.choice(list(low_stats.keys()))
-            min_value, max_value = low_stats[stat_key]
+            stat_key = random.choice(list(self.low_stats.keys()))
+            min_value, max_value = self.low_stats[stat_key]
             out_value = round((1-percentage)*max_value)
             dollar_value = ((max_value - out_value) / max_value) * 1000 
             if dollar_value < 0:
@@ -115,12 +116,12 @@ class Bet:
     
     def _lose_bet_(self):
         for tile in self.bet1:
-            tile.change_hands(self.bettee)
+            tile.change_hands(self.betee)
     
     def run(self):
-        print(render_conditions())
+        print(self.render_conditions())
         win_or_lose = input('Did they win?: Y/N')
         if 'y' in win_or_lose.lower():
-            _win_bet_()
+            self._win_bet_()
         else:
-            _lose_bet_()
+            self._lose_bet_()

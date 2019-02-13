@@ -1,4 +1,6 @@
 from ..engine import Tile, Game, Player, Bet
+from PIL import Image, ImageDraw
+from matplotlib.pyplot import imshow 
 class Cli:
 
     def __init__(self, size=None, players=None):
@@ -30,7 +32,7 @@ class Cli:
         x_length = height/len(self.game.board)
         y_length = x_length
         board = Image.new(mode='RGB', size=(height, width), color='#ffffff')
-        for row in self.board:
+        for row in self.game.board:
             for tile in row:
                 draw = ImageDraw.Draw(board)
                 draw.rectangle(((x_offset,y_offset),(x_offset+x_length,y_offset+y_length)), fill=tile.owner.color)
@@ -78,6 +80,9 @@ class Cli:
             buy_order = self._select_(available_tile_names, available_tiles, 'Which tiles would you like to buy?: ')
             for tile in buy_order:
                 game.buy(player, tile)
+        else:
+            available_tiles = self.game.tiles
+            self._select_(self.available_tiles.names, self.available_tiles, 'Which tiles would you like to buy?')
 
     def run(self):
         while True:
