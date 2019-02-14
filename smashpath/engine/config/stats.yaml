@@ -1,0 +1,94 @@
+#Stats that are hard to keep low
+low_stats: 
+    falls: 
+        - 0 
+        - 2
+    damage taken: 
+        - 0 
+        - 1000
+    launch distance: 
+        - 0 
+        - 1000
+    peak damage: 
+        - 0 
+        - 500
+    max launch speed: 
+        - 2
+        - 350
+    final smashes: 
+        - 1 
+        - 4
+    grabs: 
+        - 0 
+        - 5
+    throws: 
+        - 0 
+        - 5
+    longest drought: 
+        - 2 
+        - 20
+    air attacks: 
+        - 0 
+        - 20
+    air time: 
+        - 2
+        - 60
+    ground attacks: 
+        - 1
+        - 50
+    air attacks: 
+        - 0 
+        - 20
+    smash attacks: 
+        - 0 
+        - 20
+    items grabbed: 
+        - 0 
+        - 20
+#Stats that are hard to get high
+high_stats:
+    kos: 
+        - 1 
+        - 5
+    damage given: 
+        - 100 
+        - 2000
+    ground time: 
+        - 60 
+        - 300
+    max launcher speed: 
+        - 25 
+        - 350
+    hit percentage: 
+        - 0 
+        - 90
+    high stakes games: 
+        - 1 
+        - 10
+    grabs: 
+        - 5 
+        - 30
+    throws: 
+        - 5 
+        - 30
+    longest drought: 
+        - 5 
+        - 120
+    air attacks: 
+        - 5 
+        - 50
+    air time: 
+        - 20 
+        - 90
+    ground attacks: 
+        - 20 
+        - 120
+    air attacks: 
+        - 10 
+        - 80
+    smash attacks: 
+        - 10 
+        - 80
+    items grabbed: 
+        - 10 
+        - 80
